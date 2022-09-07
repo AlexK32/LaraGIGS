@@ -2,8 +2,8 @@
  namespace App\Models;
 
  class Listing {
-    public static function all(){
-        return[
+    public static function all() {
+        return [
             [
                 'id' => 1,
                 'titel' => 'Listings One',
@@ -27,10 +27,10 @@
         $listings = self::all();
 
         foreach($listings as $listing) {
-            if ($listing['$id'] == $id) {
+            if ($listing['id'] == $id) {
                 return $listing;
             }
         }
 
     }
- }
+}
