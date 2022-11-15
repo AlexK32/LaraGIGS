@@ -59,6 +59,5 @@
         >Post Job</a
     >
 </footer>
-
 </body>
 </html>
