@@ -9,10 +9,10 @@ use Illuminate\Validation\Rule;
 class ListingController extends Controller
 {
     // Show all Listings
-    public function index(Request $request) {
+    public function index() {
         return view('listings.index', [
             'listings' => Listing::latest()->filter
-            (request(['tag', 'search']))->get()
+            (request(['tag', 'search']))->paginate(6)
         ]);
     }
 
