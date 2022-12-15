@@ -1,0 +1,11 @@
+command to create a new migration : 
+   php artisan make:migration create_listings_table}
+
+Create controler command:
+   php artisan make:controller {name of controler}   
+
+Dowload clockwork 
+    composer require itsgoingd/clockwork
+
+
+  php artisan migrate:refresh --seed ->???     
