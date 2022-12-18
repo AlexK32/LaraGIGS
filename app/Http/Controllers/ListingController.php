@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -56,10 +57,31 @@ class ListingController extends Controller
         'Listing create successfully!');
     }
 
-            //Show edit Form
-            public function edit(Listing $listing) {
-                // dd($listing);
-                return view('listings.edit', ['listing' => $listing]);
-            }
+    //Show Edit Form
+    public function edit(Listing $listing){
+        return view('listings.edit', ['listing' => $listing]);
+    }
 
+     //Update Listig Data
+     public function update(Request $request, Listing $listing) {
+        $formFields = $request->validate([
+            'title' => 'required',
+            'company' => ['required'],
+            'location' => 'required',
+            'website' => 'required',
+            'email' => ['required', 'email'],
+            'tags' => 'required', 
+            'description' => 'required'
+        ]);
+
+        if($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logo', 
+            'public');
+        }
+
+        $listing->update($formFields);
+
+
+        return back()->with('message', 'Listing update successfully!');
+    }
 }
